@@ -1,0 +1,49 @@
+const mongoose = require('mongoose')
+
+//广告位图片地址数据结构
+module.exports =new mongoose.Schema({
+    index_first:{
+        type:String,
+        default:''
+    },
+    index_second:{
+        type:String,
+        default:''
+    },
+    index_third:{
+        type:String,
+        default:''
+    },
+    index_fourth:{
+        type:String,
+        default:''
+    },
+    index_fifth:{
+        type:String,
+        default:''
+    },
+    news_first:{
+        type:String,
+        default:''
+    },
+    news_second:{
+        type:String,
+        default:''
+    },
+    detail_first:{
+        type:String,
+        default:''
+    },
+    detail_second:{
+        type:String,
+        default:''
+    },
+    community_first:{
+        type:String,
+        default:''
+    },
+    community_second:{
+        type:String,
+        default:''
+    },
+})

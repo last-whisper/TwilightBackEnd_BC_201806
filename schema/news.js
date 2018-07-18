@@ -1,0 +1,53 @@
+const mongoose = require('mongoose')
+
+//新闻数据表结构
+module.exports =new mongoose.Schema({
+    category:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'NewsCategoryList'
+    },
+    model:String,
+    title:String,
+    subtitle:String,
+    movie:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Movie'
+    },
+    author:String,
+    newscon:String,
+    //展示图
+    img:String,
+    //图集
+    src:[String],
+    //预告片
+    trailer:String,
+    up:{
+        type:Number,
+        default:0
+    },
+    commontcount:{
+        type:Number,
+        default:0
+    },
+    editdate:{
+        type:Date,
+        default:Date.now
+    },
+    readingcount:{
+        type:Number,
+        default:0
+    },
+    tag:{
+        type:String,
+        default:''
+    },
+    keyword:{
+        type:Array,
+        default:[]
+    },
+    disagree:{
+        type:Number,
+        default:0
+    }
+})
+

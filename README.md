@@ -57,6 +57,18 @@
     /samemovietag：获取同类影片列表信息
     /hotshowsoon：根据影片期待人数从大到小获取即将上映的影片列表信息
     /allshowsoon：获取即将上映的影片根据上映的月份打包成若干数组，每个数组的若干个影片都是同年同月上映
+    /hotmoviepage：根据点赞数从大到小，分页获取正在上映的影片信息
+    /allmovierank：根据点赞数从大到小获取影片列表数据
+    /getnews：根据栏目分类获取新闻列表数据
+    /singlenews：根据_id获取指定新闻数据
+    /addnewsreadcount：指定新闻阅读量+1
+    /gethotnews：获取热读新闻，在指定的时间段内按阅读量排名
+    /getnewsbymovieid：根据影片_id获取改影片的所有新闻数据
+    /getnewsbycommentcount：根据新闻评论数获取热评新闻
+    /comment：会员提交评论
+    /showmoviecomment：根据点赞数排名从大到小获取影片的长影评数据
+    /getlongcomments：获取指定_id的影片的长影评
+    /getshortcomments：获取指定_id的影片的短影评
     
     
     

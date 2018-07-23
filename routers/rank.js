@@ -14,7 +14,7 @@ const NewsCategoryList = require('../model/newscategorylist');
 const MovieCategoryList = require('../model/moviecategorylist');
 const Advertisement = require('../model/advertisement');
 
-//根据正在上映的影片的wantsee排列出(观影指南)时光热度排行榜
+//根据正在上映的影片的wantsee排列出(观影指南)暮光热度排行榜
 router.get('/movieshotlist',function (req,res) {
     let today = moment().toISOString();
     let tmonthago = moment().subtract(60,'d').toISOString();

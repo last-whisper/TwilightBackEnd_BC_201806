@@ -16,7 +16,7 @@ app.use(session({
 }))
 
 //连接服务器
-mongoose.connect('mongodb://localhost:27017/register',function (err) {
+mongoose.connect('mongodb://106.12.30.132:27017/register',function (err) {
     if (err){
         console.log('数据库连接失败')
     }
@@ -52,5 +52,61 @@ app.use('/userinfo',require('./routers/user'))//用户数据操作的接口
 app.use('/rank',require('./routers/rank'))//排行榜数据的接口
 
 
+//人造数据
+const movie = require('./model/movie')
+const Users = require('./model/user')
+const moviecategory = require('./model/newscategorylist')
+const movieyear = require('./model/movieyearlist')
+const rank = require('./model/rank')
+const Bannerlist = require('./model/bannerlist');
+const News = require('./model/news')
 
+
+
+// movie.create({
+//     name:'普罗米修斯',
+//     englishname:'Promisuse',
+//     showtime:Date.now(),
+//     director:'5b077925e6e13c92ac56c623',
+// },{
+//
+//     name:'阿凡达',
+//         englishname:'Avatar',
+//     showtime:Date.now(),
+//     director:'5b077925e6e13c92ac56c624',
+//
+// })
+
+//moviecategory.create({category:'时光策划'},{category:'时光对话'},{category:'全球拾趣'},{category:'电影'},{category:'音乐'},{category:'产业'},{category:'人物'})
+
+///关于使用populate 一定要引入ref中模型！！！，随便取个变量名都行，但就是要引入
+
+// const year = require('./model/movieyearlist')
+// year.find().sort({time:1}).then(r=>{
+//     console.log(r)
+// })
+
+
+
+//方法1 可以做更复杂的更新操作，可以返回指定字段
+// let needinfo = {username:1, nickname:1, img:1, tags:1, exp:1, like:1,lastloading:1,registerdata:1}
+// //更新用户最后登陆时间
+// Users.findById("5afbef0e41fc4e1f78c7fab2",needinfo,function (err,doc) {
+//
+//     console.log('修改前',doc)
+//
+//     doc.lastloading =  Date.now();
+//
+//     doc.save();
+//     console.log('修改后',doc)
+//     console.log('time is',moment(doc.lastloading).format('YYYY-MM-DD HH:mm:ss'))
+//
+// })
+
+
+//写法简单，注option参数New  设定后返回更新后的数据
+// Users.findByIdAndUpdate('5afbef0e41fc4e1f78c7fab2',{lastloading:Date.now()},{ new: true })
+//     .then(r=>{
+//         console.log(r)
+//     })
 

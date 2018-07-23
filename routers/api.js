@@ -300,6 +300,8 @@ router.post('/rankdetail',function (req,res) {
 router.get('/bannerlist',function (req,res) {
     BannerList.findOne().then(r=>{
         res.json(r)
+    }).catch(err=>{
+        console.log(err)
     })
 });
 //获取用户信息，根据积分排名
@@ -354,7 +356,7 @@ router.get('/showsoon',function (req,res) {
     Movie.find({'$and':[{showtime:{'$gt':today}},{showtime:{'$lte':afterhalfyear}}]},needinfo)
         .populate('tag director').sort({showtime:1})
         .then(r=>{
-            res.json({data:r,code:0});
+            res.json({data:r,code:0})
         })
         .catch(err=>{
             console.log(err);
@@ -506,10 +508,7 @@ router.post('/getnews',function (req,res) {
         News.find({category:id},needinfo)
             .sort({editdate:-1}).skip(Number(req.body.skip)).limit(Number(req.body.limit))
             .then(r=>{
-                ////////////////////////////////////生产环境模拟数据延迟
-                setTimeout(function () {
-                    res.json({data:r,code:0})
-                },1000)
+                res.json({data:r,code:0})
             })
             .catch(err=>{
                 console.log(err);

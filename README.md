@@ -3,7 +3,17 @@
 ## 项目介绍：《暮光网》是一个电影门户网，属于个人项目，用于前后端技术研究
 ## 项目开发周期：201804-2018-06
 ## 项目后端技术栈：node,express,mongodb,mongoose,moment.js,multer,session
-## 项目功能：会员登陆注册，会员后台管理，会员积分，网站后台管理，评论点赞，收藏，网站数据录入，多媒体文件上传，多媒体文件在线播放，站内模糊搜索
+## 项目功能：
+    会员登陆注册，
+    会员后台管理，
+    会员积分，
+    网站后台管理，
+    评论点赞，
+    收藏，
+    网站数据录入，
+    多媒体文件上传，
+    多媒体文件在线播放，
+    站内模糊搜索
 ## 项目数据库表：
 
     advertisements:广告数据表，
@@ -69,8 +79,39 @@
     /showmoviecomment：根据点赞数排名从大到小获取影片的长影评数据
     /getlongcomments：获取指定_id的影片的长影评
     /getshortcomments：获取指定_id的影片的短影评
+    /isagreecomment：给新闻或影片的评论点赞
+    /isagreenews：给新闻点赞
+    /movieup：给影片点赞
+    /moviewantsee：会员期待某影片，添加收藏
+    /advertisementsrc：获取广告位数据
+    /hotdirector：获取所有导演的数据
     
+### rank:获取根据指定规则排列的数据
+    /movieshotlist：根据影片的期待人数获取正在上映的影片（热映影片数据）
+    /totalprice：根据票房从大到小获取影片数据
+    /totalprice-show：根据票房从大到小获取影片数据，影片范围：正在上映的影片
+    /totalprice-year：根据票房从大到小获取影片数据，影片范围：今年上映的影片
     
+## 开发中遇到的困难
+### 前后端开发环境中的跨域配置与跨域提交cookie的配置
+    解决方法：使用cors跨域，在跨域提交cookie的情况中，cors配置"Access-Control-Allow-Origin"不能为 "\*",必须为一个指定的域名，其次，为了使AXIOS跨域请求带上COOKIE需要进行如下设置：axios.defaults.withCredentials=true
+
+### 后端上传多媒体文件如何命名，如果避免重复命名
+    解决方法：引入crypto，使用md5+hex对文件进行命名
+    crypto.createHmac('md5',Math.random().toString() ).update(Date.now().toString()).digest('hex')
+
+### Mongoose中关联查询populate的具体使用方法
+    解决方法：查询了很多文档，没有得到我所使用的场景的解决方案，我所需要解决的是：
+    1.当查询到了关联的数据表的数据后，如果对该数据表返回的数据进行相关处理，如排序，限制条数等
+    解决：首先，在使用populate的那个模块一定要引入关联数据表，populate()中的参数可以定义多个关联字段，其他参数可以对该字段对应的数据表进行附加条件查询，字段筛选，排序条数限制等操作
+    2.如果查询关联的数据表中关联的数据表的数据
+    解决：链式调用populate()
+    
+### Mongoose模糊查找
+    解决方法：高级匹配符$regex与$or等的配合使用，需要注意一切搜索场合中合并数据的重复数据现象，需要进行筛选
+    
+### 日期格式的处理以及日期时间段内数据的检索，日期的对比等问题
+    解决方法：使用moment
     
     
     

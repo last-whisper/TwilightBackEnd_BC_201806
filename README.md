@@ -29,7 +29,7 @@
     searchlists:搜索分类数据表,
     users:用户数据表
 ## 项目接口分发：
-### admin:网站后台管理接口
+### /admin:网站后台管理接口
     /userpic：会员上传头像
     /usernickname：会员修改昵称
     /useraddtag：会员添加感兴趣的影片分类
@@ -43,12 +43,12 @@
     /addbanner：编辑主banner图数据
     /newslist：获取新闻分类列表数据
     /moviecategorylist：获取影片分类数据
-### user:用户登陆注册登出接口
+### /user:用户登陆注册登出接口
     /login：用户登陆
     /loginout：用户安全退出
     /register/username：用户注册用户名是否重复先行验证（注册时，用户名边输入边验证）
     /register：用户注册
-### api:网站数据获取接口
+### /api:网站数据获取接口
     /userallinfo：获取用户全部信息
     /mainmenulist：获取主导航信息
     /searchlist：获取搜索分类信息
@@ -86,7 +86,7 @@
     /advertisementsrc：获取广告位数据
     /hotdirector：获取所有导演的数据
     
-### rank:获取根据指定规则排列的数据
+### /rank:获取根据指定规则排列的数据
     /movieshotlist：根据影片的期待人数获取正在上映的影片（热映影片数据）
     /totalprice：根据票房从大到小获取影片数据
     /totalprice-show：根据票房从大到小获取影片数据，影片范围：正在上映的影片
@@ -96,7 +96,7 @@
 ### 前后端开发环境中的跨域配置与跨域提交cookie的配置
     解决方法：使用cors跨域，在跨域提交cookie的情况中，cors配置"Access-Control-Allow-Origin"不能为 "\*",必须为一个指定的域名，其次，为了使AXIOS跨域请求带上COOKIE需要进行如下设置：axios.defaults.withCredentials=true
 
-### 后端上传多媒体文件如何命名，如果避免重复命名
+### 后端上传多媒体文件如何命名，如何避免重复命名
     解决方法：引入crypto，使用md5+hex对文件进行命名
     crypto.createHmac('md5',Math.random().toString() ).update(Date.now().toString()).digest('hex')
 
